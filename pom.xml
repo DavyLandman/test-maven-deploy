@@ -24,4 +24,16 @@
     </dependency>
   </dependencies>
 
+   <distributionManagement>
+    <repository>
+      <id>usethesource-release</id>
+      <url>http://localhost:8888/temp/</url>
+    </repository>
+    <snapshotRepository>
+      <id>usethesource-release</id>
+      <url>http://localhost:8888/temp/</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+
 </project>
