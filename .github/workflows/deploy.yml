@@ -28,7 +28,7 @@ jobs:
         with:
           servers: '[
               {
-                "id": "usethesource-releases",
+                "id": "usethesource-release",
                 "username": "${{ secrets.MAVEN_USERNAME }}",
                 "password": "${{ secrets.MAVEN_PASSWORD }}"
               }

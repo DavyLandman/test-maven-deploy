@@ -27,7 +27,7 @@
    <distributionManagement>
     <repository>
       <id>usethesource-release</id>
-      <url>http://localhost:8888/temp/</url>
+      <url>http://localhost:8888/temp2/</url>
     </repository>
     <snapshotRepository>
       <id>usethesource-release</id>
