@@ -23,7 +23,7 @@ jobs:
         run: mvn -B compile test
 
       - name: Deploy
-        uses:  SWAT-engineering/usethesource-deploy-maven-action@v1-rc5
+        uses:  SWAT-engineering/usethesource-deploy-maven-action@v1-rc6
         with:
           maven-username: ${{ secrets.MAVEN_USERNAME }}
           maven-password: ${{ secrets.MAVEN_PASSWORD }}
