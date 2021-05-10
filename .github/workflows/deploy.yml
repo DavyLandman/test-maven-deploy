@@ -22,28 +22,39 @@ jobs:
       - name: Test with Maven
         run: mvn -B compile test
 
-
-      - name: Generate settings.xml for Maven deploy 
-        uses: whelk-io/maven-settings-xml-action@v15
-        with:
-          servers: '[
-              {
-                "id": "usethesource-release",
-                "username": "${{ secrets.MAVEN_USERNAME }}",
-                "password": "${{ secrets.MAVEN_PASSWORD }}"
-              }
-            ]'
-
-      - name: Install SSH Key for maven access
-        uses: shimataro/ssh-key-action@v2
-        with:
-          key: ${{ secrets.SSH_PRIVATE_KEY}}
-          name: id_ed25519
-          known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }} # if SSH_SERVER changes, regenerate with ssh-keyscan -H <hostname>
-
       - name: Deploy
-        run: |
-          echo "Starting tunnel in background"
-          ssh -N -L 8888:localhost:${{ secrets.MAVEN_WEBDAV_PORT }} ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_SERVER }} &
-          echo "Running maven deploy"
-          mvn deploy -B -DskipTests
+        uses:  SWAT-engineering/usethesource-deploy-maven-action@v1-rc1
+        with:
+          maven-username: ${{ secrets.MAVEN_USERNAME }}
+          maven-password: ${{ secrets.MAVEN_PASSWORD }}
+          maven-local-port: ${{ secrets.MAVEN_WEBDAV_PORT }}
+          ssh-hostname: ${{ secrets.SSH_SERVER }}
+          ssh-known-host: ${{ secrets.SSH_KNOWN_HOSTS }}
+          ssh-username: ${{ secrets.SSH_USERNAME }}
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+
+#      - name: Generate settings.xml for Maven deploy 
+#        uses: whelk-io/maven-settings-xml-action@v15
+#        with:
+#          servers: '[
+#              {
+#                "id": "usethesource-release",
+#                "username": "${{ secrets.MAVEN_USERNAME }}",
+#                "password": "${{ secrets.MAVEN_PASSWORD }}"
+#              }
+#            ]'
+#
+#      - name: Install SSH Key for maven access
+#        uses: shimataro/ssh-key-action@v2
+#        with:
+#          key: ${{ secrets.SSH_PRIVATE_KEY}}
+#          name: id_ed25519
+#          known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }} # if SSH_SERVER changes, regenerate with ssh-keyscan -H <hostname>
+#
+#      - name: Deploy
+#        run: |
+#          echo "Starting tunnel in background"
+#          ssh -N -L 8888:localhost:${{ secrets.MAVEN_WEBDAV_PORT }} ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_SERVER }} &
+#          echo "Running maven deploy"
+#          mvn deploy -B -DskipTests
