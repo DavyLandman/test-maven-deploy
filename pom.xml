@@ -5,7 +5,7 @@
 
   <groupId>nl.davylandman.test</groupId>
   <artifactId>maven-deploy</artifactId>
-  <version>1.1-SNAPSHOT</version>
+  <version>1.1</version>
 
   <name>maven-deploy</name>
 
