@@ -37,4 +37,4 @@ jobs:
 
 
       - name: Attach artifact
-        uses:  SWAT-engineering/maven-full-artifacts-action@v1-rc1
+        uses:  SWAT-engineering/maven-full-artifacts-action@v1-rc2
