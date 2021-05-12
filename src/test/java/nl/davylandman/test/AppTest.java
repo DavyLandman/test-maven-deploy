@@ -37,6 +37,6 @@ public class AppTest
     }
 
     public void extraTest() {
-        assertTrue(true, "This should work");
+        assertTrue("This should work", true);
     }
 }
