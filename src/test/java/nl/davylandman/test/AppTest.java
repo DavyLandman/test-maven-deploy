@@ -35,4 +35,8 @@ public class AppTest
     {
         assertTrue( false );
     }
+
+    public void extraTest() {
+        assertTrue(true, "This should work");
+    }
 }
