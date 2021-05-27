@@ -49,4 +49,14 @@ jobs:
 
 
       - name: Attach artifact
+        id: build-artifact
         uses:  SWAT-engineering/maven-full-artifacts-action@v1
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          draft: true
+          files: ${{ steps.build-artifact.outputs.artifact-root-dir}}/**/*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
