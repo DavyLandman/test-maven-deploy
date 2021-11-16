@@ -3,6 +3,11 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+  <parent>
+    <groupId>io.usethesource</groupId>
+    <artifactId>pom_parent</artifactId>
+    <version>0.3.5</version>
+  </parent>
   <groupId>nl.davylandman.test</groupId>
   <artifactId>maven-deploy</artifactId>
   <version>1.7-SNAPSHOT</version>
@@ -28,6 +33,19 @@
 
     </plugins>
   </build>
+
+    <repositories>
+        <repository>
+            <id>usethesource</id>
+            <url>https://releases.usethesource.io/maven/</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>usethesource</id>
+            <url>https://releases.usethesource.io/maven/</url>
+        </pluginRepository>
+    </pluginRepositories>
 
   <dependencies>
     <dependency>
