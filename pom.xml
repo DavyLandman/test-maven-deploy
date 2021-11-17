@@ -58,11 +58,8 @@
                 <configuration>
                     <bin>${project.build.outputDirectory}</bin>
                     <srcs>
-                        <src>${project.basedir}/src</src>
+                        <src>${project.basedir}/src/main/rascal</src>
                     </srcs>
-                    <srcIgnores>
-                        <srcIgnore>${project.basedir}/src/examples</srcIgnore>
-                    </srcIgnores>
                     <errorsAsWarnings>true</errorsAsWarnings>
                 </configuration>
                 <executions>
@@ -96,8 +93,6 @@
                     <includes>
                         <include>**/*Tests.java</include>
                     </includes>
-                    <testSourceDirectory>${basedir}/src/</testSourceDirectory>
-                    <testClassesDirectory>${project.build.directory}/classes/</testClassesDirectory>
                 </configuration>
             </plugin>
 
